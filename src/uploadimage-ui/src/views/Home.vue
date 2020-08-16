@@ -8,10 +8,11 @@
       </v-row>
       <v-layout justify-space-between>
         <h1>Lista de Obras de Arte</h1>
-        <v-btn color="#0a00b6" rounded dark>Nova Obra</v-btn>
+        <v-btn color="#0a00b6" rounded dark></v-btn>
+        <RouterLink to="About">Nova Obra</RouterLink>
       </v-layout>
       <v-row class="mt-16" justify="space-around">
-        <v-card v-for="n in 10" :key="n" color="#9d46ff" dark class="p-10">
+        <v-card v-for="n in 10" :key="n" color="#9d46ff" dark class="p-10 mt-8">
           <v-row>
             <v-col  class="px-6">
               <v-img 
@@ -38,7 +39,7 @@
 <style scoped>
 .home {
   background-color: #6200ea;
-  height: 100vh;
+  min-height: 100vh;
 }
 
 h1 {
