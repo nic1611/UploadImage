@@ -21,7 +21,7 @@
   min-height: 100vh;
 }
 
-h1 {
+h1, h2 {
   color: #ffffff;
 }
 

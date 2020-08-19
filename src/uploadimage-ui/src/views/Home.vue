@@ -1,11 +1,15 @@
 <template>
   <div class="home">
-    <v-layout justify-space-between>
-      <h1>Lista de Obras de Arte</h1>
-      <RouterLink class="router-link" to="/about">
-        <v-btn color="#0a00b6" rounded dark>Nova Obra</v-btn>
-      </RouterLink>
-    </v-layout>
+    <v-row>
+      <v-col min-width="300" class="text-center">
+        <h2>Lista de Obras de Arte</h2>
+      </v-col>
+      <v-col min-width="300" class="text-center">
+        <RouterLink class="router-link" to="/About">
+          <v-btn color="#0a00b6" rounded dark>Nova Obra</v-btn>
+        </RouterLink>
+      </v-col>
+    </v-row>
     <v-row class="mt-16" justify="space-around">
       <v-card v-for="n in 10" :key="n" color="#9d46ff" dark class="p-10 mt-8">
         <v-row>
@@ -29,11 +33,9 @@
 </template>
 
 <style scoped>
-
 .col-des {
   height: 200px;
 }
-
 </style>
 
 <script>

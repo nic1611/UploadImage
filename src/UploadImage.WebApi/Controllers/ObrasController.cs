@@ -11,13 +11,13 @@ namespace UploadImage.WebApi.Controllers
             return Ok(new {nome="Quadro A"});
         }
 
-        [HttpGet("/novo")]
+        [HttpPost("/novo")]
         public ActionResult Create([FromBody] ObraViewModel obra)
         {
             return Ok(new {nome="Quadro A"});
         }
 
-        [HttpGet("/remover/{id:int}")]
+        [HttpDelete("/remover/{id:int}")]
         public ActionResult Delete(int id)
         {
             return Ok(new {nome="Quadro A"});
