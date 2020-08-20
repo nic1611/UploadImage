@@ -9,7 +9,12 @@
       <v-col>
         <v-form>
           <v-text-field v-model="obj.Nome" dark label="Nome"></v-text-field>
-          <v-file-input v-model="obj.Imagem" accept="image/*" dark label="Imagem">
+          <v-file-input
+            @change="getBase64"
+            accept="image/*"
+            dark
+            label="Imagem"
+          >
           </v-file-input>
           <v-btn class="mt-6" rounded dark color="#0a00b6" v-on:click="this.log"
             >Enviar</v-btn
@@ -33,16 +38,28 @@ export default {
     };
   },
   methods: {
+    getBase64() {
+      var file = document.querySelector("input[type=file]").files[0];
+      var reader = new FileReader();
+
+      reader.onload = (e) => {
+        this.obj.Imagem = e.target.result;
+      };
+      reader.readAsDataURL(file);
+    },
     log() {
-      console.log(this.obj.Nome, this.obj.Imagem);
       this.enviarParaApi();
     },
     enviarParaApi() {
       fetch("https://localhost:5001/novo/", {
         method: "post",
-        body: this.obj,
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(this.obj),
       }).then(function(response) {
-        return response.json();
+        console.log(response.json());
       });
     },
   },

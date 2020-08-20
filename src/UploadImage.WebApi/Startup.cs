@@ -29,6 +29,7 @@ namespace UploadImage.WebApi
             services.AddControllers();
 
             services.ResolveDependencies();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -39,11 +40,16 @@ namespace UploadImage.WebApi
                 app.UseDeveloperExceptionPage();
             }
 
-            //app.UseHttpsRedirection();
+            app.UseHttpsRedirection();
 
             app.UseRouting();
 
-            app.UseCors(builder => builder.AllowAnyOrigin());
+            app.UseCors(builder => builder
+            .AllowAnyOrigin()
+            .AllowAnyHeader()
+            .AllowAnyMethod());
+
+            app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
