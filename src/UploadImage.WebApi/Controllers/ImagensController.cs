@@ -1,4 +1,3 @@
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using UploadImage.WebApi.ViewModel;
 
@@ -6,7 +5,7 @@ namespace UploadImage.WebApi.Controllers
 {
     [Route("/")]
     [ApiController]
-    public class ObrasController : Controller
+    public class ImagensController : ControllerBase
     {
         [HttpGet("/")]
         public ActionResult Index()
@@ -15,9 +14,9 @@ namespace UploadImage.WebApi.Controllers
         }
 
         [HttpPost("/novo")]
-        public ActionResult Create(ObraViewModel obra)
+        public ActionResult Create(ImagemViewModel imagem)
         {
-            return Ok(obra);
+            return Ok(imagem);
         }
 
         [HttpDelete("/remover/{id:int}")]

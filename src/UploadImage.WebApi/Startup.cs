@@ -1,16 +1,11 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using UploadImage.WebApi.Config;
+using UploadImage.WebApi.Data;
 
 namespace UploadImage.WebApi
 {
@@ -27,6 +22,10 @@ namespace UploadImage.WebApi
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+
+            services.AddDbContext<ApiContext>(opt => opt.UseInMemoryDatabase(databaseName: "Imagens"));
+            
+            services.AddMvc();
 
             services.ResolveDependencies();
 
@@ -49,7 +48,6 @@ namespace UploadImage.WebApi
             .AllowAnyHeader()
             .AllowAnyMethod());
 
-            app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
