@@ -58,8 +58,12 @@ export default {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(this.obj),
-      }).then(function(response) {
-        console.log(response.json());
+      }).then(function(e) {
+        if (e.status == 200) {
+          alert("Imagem cadastrada com sucesso");
+        } else {
+          alert("Problema ao cadastrar a imagem");
+        }
       });
     },
   },

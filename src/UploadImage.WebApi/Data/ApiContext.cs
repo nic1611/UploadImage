@@ -9,6 +9,6 @@ namespace UploadImage.WebApi.Data
           : base(options)
         { }
 
-        public DbSet<ImagemViewModel> Usuarios { get; set; }
+        public DbSet<ImagemViewModel> Imagens { get; set; }
     }
 }
